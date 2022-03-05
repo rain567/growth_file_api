@@ -19,6 +19,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="1c30c54c-7e5a-47a8-978d-67624f981cad" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -96,6 +99,7 @@
       <workItem from="1645930917484" duration="2519000" />
       <workItem from="1646146108042" duration="637000" />
       <workItem from="1646469212860" duration="7574000" />
+      <workItem from="1646488464008" duration="346000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1645534592258</created>
@@ -153,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646488424820</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="修改">
+      <created>1646488473539</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1646488473539</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +175,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -189,11 +202,11 @@
       <screen x="0" y="0" width="3440" height="1392" />
     </state>
     <state x="321" y="354" width="1165" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1392@0.0.3440.1392" timestamp="1645533761819" />
-    <state x="349" y="294" key="CommitChangelistDialog2" timestamp="1646488424178">
+    <state x="349" y="294" key="CommitChangelistDialog2" timestamp="1646488472935">
       <screen x="0" y="0" width="3440" height="1392" />
     </state>
     <state x="349" y="294" key="CommitChangelistDialog2/0.0.3440.1392/0.1440.1440.900@0.0.3440.1392" timestamp="1646488368609" />
-    <state x="349" y="294" key="CommitChangelistDialog2/0.0.3440.1392@0.0.3440.1392" timestamp="1646488424178" />
+    <state x="349" y="294" key="CommitChangelistDialog2/0.0.3440.1392@0.0.3440.1392" timestamp="1646488472935" />
     <state x="100" y="100" width="1524" height="1192" key="DiffContextDialog" timestamp="1646487768224">
       <screen x="0" y="0" width="3440" height="1392" />
     </state>
@@ -270,15 +283,15 @@
     </state>
     <state width="1663" height="485" key="GridCell.Tab.2.right/0.0.3440.1392/0.1440.1440.900@0.0.3440.1392" timestamp="1646487709720" />
     <state width="1663" height="485" key="GridCell.Tab.2.right/0.0.3440.1392@0.0.3440.1392" timestamp="1646488454346" />
-    <state x="370" y="341" key="SettingsEditor" timestamp="1645535736930">
+    <state x="370" y="341" key="SettingsEditor" timestamp="1646488809103">
       <screen x="0" y="0" width="3440" height="1392" />
     </state>
-    <state x="370" y="341" key="SettingsEditor/0.0.3440.1392@0.0.3440.1392" timestamp="1645535736930" />
-    <state x="459" y="432" key="Vcs.Push.Dialog.v2" timestamp="1646488425794">
+    <state x="370" y="341" key="SettingsEditor/0.0.3440.1392@0.0.3440.1392" timestamp="1646488809103" />
+    <state x="459" y="432" key="Vcs.Push.Dialog.v2" timestamp="1646488475506">
       <screen x="0" y="0" width="3440" height="1392" />
     </state>
     <state x="459" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1392/0.1440.1440.900@0.0.3440.1392" timestamp="1646488370556" />
-    <state x="459" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1392@0.0.3440.1392" timestamp="1646488425794" />
+    <state x="459" y="432" key="Vcs.Push.Dialog.v2/0.0.3440.1392@0.0.3440.1392" timestamp="1646488475506" />
     <state x="656" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1646487703228">
       <screen x="0" y="0" width="3440" height="1392" />
     </state>
