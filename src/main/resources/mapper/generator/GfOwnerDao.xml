@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.GfOwnerDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.GfOwnerEntity" id="gfOwnerMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="ownerNo" column="owner_no"/>
+        <result property="ownerName" column="owner_name"/>
+        <result property="homePhone" column="home_phone"/>
+        <result property="bysj" column="bysj"/>
+        <result property="rxsj" column="rxsj"/>
+        <result property="jtzz" column="jtzz"/>
+        <result property="birthday" column="birthday"/>
+        <result property="zzmm" column="zzmm"/>
+        <result property="major" column="major"/>
+        <result property="userClass" column="user_class"/>
+        <result property="mz" column="mz"/>
+        <result property="jg" column="jg"/>
+        <result property="shareUser" column="share_user"/>
+        <result property="isShare" column="is_share"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="operator" column="operator"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+
+</mapper>

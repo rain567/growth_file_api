@@ -30,12 +30,23 @@ import java.util.List;
 @TableName("sys_user")
 public class SysUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * 用户ID
 	 */
 	@TableId
 	private Long userId;
+
+	/**
+	 * 学号/工号
+	 */
+	@NotBlank(message="学号/工号不能为空", groups = {AddGroup.class})
+	private Integer no;
+
+	/**
+	 * 所在学院
+	 */
+	private String faculty;
 
 	/**
 	 * 用户名
