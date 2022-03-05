@@ -9,6 +9,7 @@ server:
   servlet:
     context-path: /renren-fast
 
+
 spring:
   # 环境 dev|test|prod
   profiles:
