@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-05 21:05:06
+ * @date 2022-03-14 14:19:55
  */
 @Data
 @TableName("gf_owner")
@@ -52,6 +52,10 @@ public class GfOwnerEntity implements Serializable {
 	 * 家庭住址
 	 */
 	private String jtzz;
+	/**
+	 * 状态(1新建、2审核)
+	 */
+	private Integer status;
 	/**
 	 * 出生日期
 	 */

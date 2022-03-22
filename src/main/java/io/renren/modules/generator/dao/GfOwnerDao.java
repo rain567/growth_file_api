@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-05 21:05:06
+ * @date 2022-03-14 14:19:55
  */
 @Mapper
 public interface GfOwnerDao extends BaseMapper<GfOwnerEntity> {

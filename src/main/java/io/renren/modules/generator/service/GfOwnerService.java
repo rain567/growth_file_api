@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-05 21:05:06
+ * @date 2022-03-14 14:19:55
  */
 public interface GfOwnerService extends IService<GfOwnerEntity> {
 
