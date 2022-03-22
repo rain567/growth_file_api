@@ -2,18 +2,18 @@ package io.renren.modules.generator.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
-import io.renren.modules.generator.entity.GfClassEntity;
+import io.renren.modules.generator.entity.GfPhysicalTestEntity;
 
 import java.util.Map;
 
 /**
- * 班级
+ * 体测管理
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:55
+ * @date 2022-03-14 22:07:24
  */
-public interface GfClassService extends IService<GfClassEntity> {
+public interface GfPhysicalTestService extends IService<GfPhysicalTestEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 }

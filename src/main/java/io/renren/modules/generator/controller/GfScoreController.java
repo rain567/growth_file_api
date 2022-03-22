@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.renren.modules.generator.entity.GfOwnerEntity;
-import io.renren.modules.generator.service.GfOwnerService;
+import io.renren.modules.generator.entity.GfScoreEntity;
+import io.renren.modules.generator.service.GfScoreService;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 
 
 
 /**
- * 档案信息表
+ * 成绩
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:55
+ * @date 2022-03-14 14:19:56
  */
 @RestController
-@RequestMapping("generator/gfowner")
-public class GfOwnerController {
+@RequestMapping("generator/gfscore")
+public class GfScoreController {
     @Autowired
-    private GfOwnerService gfOwnerService;
+    private GfScoreService gfScoreService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("generator:gfowner:list")
+    @RequiresPermissions("generator:gfscore:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = gfOwnerService.queryPage(params);
+        PageUtils page = gfScoreService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +47,20 @@ public class GfOwnerController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("generator:gfowner:info")
+    @RequiresPermissions("generator:gfscore:info")
     public R info(@PathVariable("id") Long id){
-		GfOwnerEntity gfOwner = gfOwnerService.getById(id);
+		GfScoreEntity gfScore = gfScoreService.getById(id);
 
-        return R.ok().put("gfOwner", gfOwner);
+        return R.ok().put("gfScore", gfScore);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("generator:gfowner:save")
-    public R save(@RequestBody GfOwnerEntity gfOwner){
-		gfOwnerService.save(gfOwner);
+    @RequiresPermissions("generator:gfscore:save")
+    public R save(@RequestBody GfScoreEntity gfScore){
+		gfScoreService.save(gfScore);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class GfOwnerController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("generator:gfowner:update")
-    public R update(@RequestBody GfOwnerEntity gfOwner){
-		gfOwnerService.updateById(gfOwner);
+    @RequiresPermissions("generator:gfscore:update")
+    public R update(@RequestBody GfScoreEntity gfScore){
+		gfScoreService.updateById(gfScore);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class GfOwnerController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("generator:gfowner:delete")
+    @RequiresPermissions("generator:gfscore:delete")
     public R delete(@RequestBody Long[] ids){
-		gfOwnerService.removeByIds(Arrays.asList(ids));
+		gfScoreService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

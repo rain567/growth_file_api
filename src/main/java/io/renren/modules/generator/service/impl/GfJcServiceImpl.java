@@ -8,19 +8,19 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
 
-import io.renren.modules.generator.dao.GfClassDao;
-import io.renren.modules.generator.entity.GfClassEntity;
-import io.renren.modules.generator.service.GfClassService;
+import io.renren.modules.generator.dao.GfJcDao;
+import io.renren.modules.generator.entity.GfJcEntity;
+import io.renren.modules.generator.service.GfJcService;
 
 
-@Service("gfClassService")
-public class GfClassServiceImpl extends ServiceImpl<GfClassDao, GfClassEntity> implements GfClassService {
+@Service("gfJcService")
+public class GfJcServiceImpl extends ServiceImpl<GfJcDao, GfJcEntity> implements GfJcService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        IPage<GfClassEntity> page = this.page(
-                new Query<GfClassEntity>().getPage(params),
-                new QueryWrapper<GfClassEntity>()
+        IPage<GfJcEntity> page = this.page(
+                new Query<GfJcEntity>().getPage(params),
+                new QueryWrapper<GfJcEntity>()
         );
 
         return new PageUtils(page);

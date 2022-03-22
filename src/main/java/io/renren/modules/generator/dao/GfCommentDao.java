@@ -1,17 +1,17 @@
 package io.renren.modules.generator.dao;
 
-import io.renren.modules.generator.entity.GfClassEntity;
+import io.renren.modules.generator.entity.GfCommentEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 班级
+ * 评论管理
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:55
+ * @date 2022-03-14 22:07:24
  */
 @Mapper
-public interface GfClassDao extends BaseMapper<GfClassEntity> {
+public interface GfCommentDao extends BaseMapper<GfCommentEntity> {
 	
 }

@@ -8,19 +8,19 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
 
-import io.renren.modules.generator.dao.GfClassDao;
-import io.renren.modules.generator.entity.GfClassEntity;
-import io.renren.modules.generator.service.GfClassService;
+import io.renren.modules.generator.dao.GfScoreDao;
+import io.renren.modules.generator.entity.GfScoreEntity;
+import io.renren.modules.generator.service.GfScoreService;
 
 
-@Service("gfClassService")
-public class GfClassServiceImpl extends ServiceImpl<GfClassDao, GfClassEntity> implements GfClassService {
+@Service("gfScoreService")
+public class GfScoreServiceImpl extends ServiceImpl<GfScoreDao, GfScoreEntity> implements GfScoreService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        IPage<GfClassEntity> page = this.page(
-                new Query<GfClassEntity>().getPage(params),
-                new QueryWrapper<GfClassEntity>()
+        IPage<GfScoreEntity> page = this.page(
+                new Query<GfScoreEntity>().getPage(params),
+                new QueryWrapper<GfScoreEntity>()
         );
 
         return new PageUtils(page);

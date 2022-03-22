@@ -13,6 +13,7 @@
         <result property="bysj" column="bysj"/>
         <result property="rxsj" column="rxsj"/>
         <result property="jtzz" column="jtzz"/>
+        <result property="status" column="status"/>
         <result property="birthday" column="birthday"/>
         <result property="zzmm" column="zzmm"/>
         <result property="major" column="major"/>

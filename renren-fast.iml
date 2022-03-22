@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
+<<<<<<< HEAD
     <facet type="Spring" name="Spring">
       <configuration />
     </facet>
+=======
+>>>>>>> github.com/master
     <facet type="web" name="Web">
       <configuration>
         <webroots />
@@ -13,6 +16,12 @@
         </sourceRoots>
       </configuration>
     </facet>
+<<<<<<< HEAD
+=======
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+>>>>>>> github.com/master
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />

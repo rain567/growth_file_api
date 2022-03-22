@@ -8,19 +8,19 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
 
-import io.renren.modules.generator.dao.GfClassDao;
-import io.renren.modules.generator.entity.GfClassEntity;
-import io.renren.modules.generator.service.GfClassService;
+import io.renren.modules.generator.dao.GfCommentDao;
+import io.renren.modules.generator.entity.GfCommentEntity;
+import io.renren.modules.generator.service.GfCommentService;
 
 
-@Service("gfClassService")
-public class GfClassServiceImpl extends ServiceImpl<GfClassDao, GfClassEntity> implements GfClassService {
+@Service("gfCommentService")
+public class GfCommentServiceImpl extends ServiceImpl<GfCommentDao, GfCommentEntity> implements GfCommentService {
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        IPage<GfClassEntity> page = this.page(
-                new Query<GfClassEntity>().getPage(params),
-                new QueryWrapper<GfClassEntity>()
+        IPage<GfCommentEntity> page = this.page(
+                new Query<GfCommentEntity>().getPage(params),
+                new QueryWrapper<GfCommentEntity>()
         );
 
         return new PageUtils(page);

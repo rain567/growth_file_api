@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.renren.modules.generator.entity.GfOwnerEntity;
-import io.renren.modules.generator.service.GfOwnerService;
+import io.renren.modules.generator.entity.GfCertificateEntity;
+import io.renren.modules.generator.service.GfCertificateService;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 
 
 
 /**
- * 档案信息表
+ * 资格证书管理
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:55
+ * @date 2022-03-14 22:07:24
  */
 @RestController
-@RequestMapping("generator/gfowner")
-public class GfOwnerController {
+@RequestMapping("generator/gfcertificate")
+public class GfCertificateController {
     @Autowired
-    private GfOwnerService gfOwnerService;
+    private GfCertificateService gfCertificateService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("generator:gfowner:list")
+    @RequiresPermissions("generator:gfcertificate:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = gfOwnerService.queryPage(params);
+        PageUtils page = gfCertificateService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +47,20 @@ public class GfOwnerController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("generator:gfowner:info")
+    @RequiresPermissions("generator:gfcertificate:info")
     public R info(@PathVariable("id") Long id){
-		GfOwnerEntity gfOwner = gfOwnerService.getById(id);
+		GfCertificateEntity gfCertificate = gfCertificateService.getById(id);
 
-        return R.ok().put("gfOwner", gfOwner);
+        return R.ok().put("gfCertificate", gfCertificate);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("generator:gfowner:save")
-    public R save(@RequestBody GfOwnerEntity gfOwner){
-		gfOwnerService.save(gfOwner);
+    @RequiresPermissions("generator:gfcertificate:save")
+    public R save(@RequestBody GfCertificateEntity gfCertificate){
+		gfCertificateService.save(gfCertificate);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class GfOwnerController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("generator:gfowner:update")
-    public R update(@RequestBody GfOwnerEntity gfOwner){
-		gfOwnerService.updateById(gfOwner);
+    @RequiresPermissions("generator:gfcertificate:update")
+    public R update(@RequestBody GfCertificateEntity gfCertificate){
+		gfCertificateService.updateById(gfCertificate);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class GfOwnerController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("generator:gfowner:delete")
+    @RequiresPermissions("generator:gfcertificate:delete")
     public R delete(@RequestBody Long[] ids){
-		gfOwnerService.removeByIds(Arrays.asList(ids));
+		gfCertificateService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

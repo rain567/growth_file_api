@@ -8,15 +8,15 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 班级
+ * 成绩
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:55
+ * @date 2022-03-14 14:19:56
  */
 @Data
-@TableName("gf_class")
-public class GfClassEntity implements Serializable {
+@TableName("gf_score")
+public class GfScoreEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,25 +25,37 @@ public class GfClassEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
-	 * 班级名称
+	 * 姓名
 	 */
-	private String name;
+	private String studentName;
 	/**
-	 * 所在专业
+	 * 学号
 	 */
-	private String faculty;
+	private String studentNo;
 	/**
-	 * 所在学院
+	 * 考试科目
 	 */
-	private String institute;
+	private String course;
 	/**
-	 * 辅导员姓名
+	 * 任课老师
 	 */
-	private String instructor;
+	private String teacher;
 	/**
-	 * 班主任姓名
+	 * 分数
 	 */
-	private String bzr;
+	private Double score;
+	/**
+	 * 所属班级
+	 */
+	private String className;
+	/**
+	 * 考试时间
+	 */
+	private Date examTime;
+	/**
+	 * 考试类型
+	 */
+	private String type;
 	/**
 	 * 创建时间
 	 */

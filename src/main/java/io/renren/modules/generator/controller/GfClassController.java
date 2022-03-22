@@ -23,21 +23,21 @@ import io.renren.common.utils.R;
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-02-22 22:41:46
+ * @date 2022-03-14 14:19:55
  */
 @RestController
-@RequestMapping("generator/GfClass")
+@RequestMapping("generator/GFClass")
 public class GfClassController {
     @Autowired
-    private GfClassService GfClassService;
+    private GfClassService gfClassService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("generator:gf_class:list")
+    @RequiresPermissions("generator:gfclass:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = GfClassService.queryPage(params);
+        PageUtils page = gfClassService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -47,20 +47,20 @@ public class GfClassController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("generator:gf_class:info")
+    @RequiresPermissions("generator:gfclass:info")
     public R info(@PathVariable("id") Long id){
-		GfClassEntity GfClass = GfClassService.getById(id);
+		GfClassEntity gfClass = gfClassService.getById(id);
 
-        return R.ok().put("GfClass", GfClass);
+        return R.ok().put("gfClass", gfClass);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("generator:gf_class:save")
-    public R save(@RequestBody GfClassEntity GfClass){
-		GfClassService.save(GfClass);
+    @RequiresPermissions("generator:gfclass:save")
+    public R save(@RequestBody GfClassEntity gfClass){
+		gfClassService.save(gfClass);
 
         return R.ok();
     }
@@ -69,9 +69,9 @@ public class GfClassController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("generator:gf_class:update")
-    public R update(@RequestBody GfClassEntity GfClass){
-		GfClassService.updateById(GfClass);
+    @RequiresPermissions("generator:gfclass:update")
+    public R update(@RequestBody GfClassEntity gfClass){
+		gfClassService.updateById(gfClass);
 
         return R.ok();
     }
@@ -80,9 +80,9 @@ public class GfClassController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("generator:gf_class:delete")
+    @RequiresPermissions("generator:gfclass:delete")
     public R delete(@RequestBody Long[] ids){
-		GfClassService.removeByIds(Arrays.asList(ids));
+		gfClassService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }
