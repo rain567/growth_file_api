@@ -72,6 +72,10 @@ public class SysUserEntity implements Serializable {
 	 */
 	private String mobile;
 	/**
+	 * 班级
+	 */
+	private String userClass;
+	/**
 	 * 状态  0：禁用   1：正常
 	 */
 	private Integer status;

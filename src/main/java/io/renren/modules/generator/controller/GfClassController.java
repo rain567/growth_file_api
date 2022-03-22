@@ -1,8 +1,10 @@
 package io.renren.modules.generator.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import io.renren.modules.sys.controller.AbstractController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +28,8 @@ import io.renren.common.utils.R;
  * @date 2022-03-14 14:19:55
  */
 @RestController
-@RequestMapping("generator/GFClass")
-public class GfClassController {
+@RequestMapping("generator/gfclass")
+public class GfClassController extends AbstractController {
     @Autowired
     private GfClassService gfClassService;
 
@@ -40,6 +42,17 @@ public class GfClassController {
         PageUtils page = gfClassService.queryPage(params);
 
         return R.ok().put("page", page);
+    }
+
+    /**
+     * 列表
+     */
+    @RequestMapping("/allList")
+    @RequiresPermissions("generator:gfclass:list")
+    public R allList(){
+        List<GfClassEntity> list = gfClassService.list();
+
+        return R.ok().put("list", list);
     }
 
 

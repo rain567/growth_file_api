@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 班级
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2022-03-14 14:19:55
@@ -40,6 +40,10 @@ public class GfClassEntity implements Serializable {
 	 * 辅导员姓名
 	 */
 	private String instructor;
+	/**
+	 * 辅导员id
+	 */
+	private String instructorId;
 	/**
 	 * 班主任姓名
 	 */

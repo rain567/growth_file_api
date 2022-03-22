@@ -3,6 +3,7 @@ package io.renren.modules.generator.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import io.renren.modules.sys.controller.AbstractController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ import io.renren.common.utils.R;
  */
 @RestController
 @RequestMapping("generator/gfowner")
-public class GfOwnerController {
+public class GfOwnerController extends AbstractController {
     @Autowired
     private GfOwnerService gfOwnerService;
 
@@ -37,6 +38,11 @@ public class GfOwnerController {
     @RequestMapping("/list")
     @RequiresPermissions("generator:gfowner:list")
     public R list(@RequestParam Map<String, Object> params){
+        getUser().getRoleIdList().parallelStream().forEach(item -> {
+            if (item == 3) {
+                params.put("instructorId", item);
+            }
+        });
         PageUtils page = gfOwnerService.queryPage(params);
 
         return R.ok().put("page", page);
