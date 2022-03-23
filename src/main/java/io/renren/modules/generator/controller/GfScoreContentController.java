@@ -3,7 +3,6 @@ package io.renren.modules.generator.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import io.renren.modules.sys.controller.AbstractController;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,33 +11,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.renren.modules.generator.entity.GfJcEntity;
-import io.renren.modules.generator.service.GfJcService;
+import io.renren.modules.generator.entity.GfScoreContentEntity;
+import io.renren.modules.generator.service.GfScoreContentService;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 
 
 
 /**
- * 奖惩
+ * 心得体会
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:56
+ * @date 2022-03-23 15:13:11
  */
 @RestController
-@RequestMapping("generator/gfjc")
-public class GfJcController  extends AbstractController {
+@RequestMapping("generator/gfscorecontent")
+public class GfScoreContentController {
     @Autowired
-    private GfJcService gfJcService;
+    private GfScoreContentService gfScoreContentService;
+
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("generator:gfjc:list")
+    @RequiresPermissions("generator:gfscorecontent:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = gfJcService.queryPage(params);
+        PageUtils page = gfScoreContentService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -48,20 +48,20 @@ public class GfJcController  extends AbstractController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("generator:gfjc:info")
+    @RequiresPermissions("generator:gfscorecontent:info")
     public R info(@PathVariable("id") Long id){
-		GfJcEntity gfJc = gfJcService.getById(id);
+		GfScoreContentEntity gfScoreContent = gfScoreContentService.getById(id);
 
-        return R.ok().put("gfJc", gfJc);
+        return R.ok().put("gfScoreContent", gfScoreContent);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("generator:gfjc:save")
-    public R save(@RequestBody GfJcEntity gfJc){
-		gfJcService.save(gfJc);
+    @RequiresPermissions("generator:gfscorecontent:save")
+    public R save(@RequestBody GfScoreContentEntity gfScoreContent){
+		gfScoreContentService.save(gfScoreContent);
 
         return R.ok();
     }
@@ -70,9 +70,9 @@ public class GfJcController  extends AbstractController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("generator:gfjc:update")
-    public R update(@RequestBody GfJcEntity gfJc){
-		gfJcService.updateById(gfJc);
+    @RequiresPermissions("generator:gfscorecontent:update")
+    public R update(@RequestBody GfScoreContentEntity gfScoreContent){
+		gfScoreContentService.updateById(gfScoreContent);
 
         return R.ok();
     }
@@ -81,9 +81,9 @@ public class GfJcController  extends AbstractController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("generator:gfjc:delete")
+    @RequiresPermissions("generator:gfscorecontent:delete")
     public R delete(@RequestBody Long[] ids){
-		gfJcService.removeByIds(Arrays.asList(ids));
+		gfScoreContentService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

@@ -1,5 +1,6 @@
 package io.renren.modules.generator.service.impl;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -18,9 +19,15 @@ public class GfCommentServiceImpl extends ServiceImpl<GfCommentDao, GfCommentEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        Integer type = Integer.parseInt((String) params.get("type"));
+        String userId = (String) params.get("userId");
+        String originUserId = (String) params.get("originUserId");
         IPage<GfCommentEntity> page = this.page(
                 new Query<GfCommentEntity>().getPage(params),
                 new QueryWrapper<GfCommentEntity>()
+                    .eq(type != null, "type", type)
+                    .eq(StringUtils.isNotBlank(userId), "user_id", userId)
+                    .eq(StringUtils.isNotBlank(originUserId), "origin_user_id", originUserId)
         );
 
         return new PageUtils(page);

@@ -8,15 +8,15 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 奖惩
- *
+ * 心得体会
+ * 
  * @author chenshun
  * @email sunlightcs@gmail.com
- * @date 2022-03-14 14:19:56
+ * @date 2022-03-23 15:13:11
  */
 @Data
-@TableName("gf_jc")
-public class GfJcEntity implements Serializable {
+@TableName("gf_score_content")
+public class GfScoreContentEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,41 +25,9 @@ public class GfJcEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
-	 * 学生学号
-	 */
-	private String studentNo;
-	/**
-	 * 学生姓名
-	 */
-	private String name;
-	/**
-	 * 状态(1新建、2审核)
-	 */
-	private Integer status;
-	/**
-	 * 类型(1奖励、2惩罚)
-	 */
-	private String type;
-	/**
-	 * 录入人姓名
-	 */
-	private String createName;
-	/**
-	 * 审批人姓名
-	 */
-	private String auditName;
-	/**
-	 * 获奖/惩日期
-	 */
-	private Date getTime;
-	/**
-	 * 获奖/惩内容
+	 * 内容
 	 */
 	private String content;
-	/**
-	 * 材料相关证明
-	 */
-	private String cl;
 	/**
 	 * 创建时间
 	 */
@@ -76,5 +44,21 @@ public class GfJcEntity implements Serializable {
 	 * 备注
 	 */
 	private String remark;
+	/**
+	 * 姓名
+	 */
+	private String studentName;
+	/**
+	 * 学号
+	 */
+	private String studentNo;
+	/**
+	 * 考试科目
+	 */
+	private String course;
+	/**
+	 * 任课老师
+	 */
+	private String teacher;
 
 }

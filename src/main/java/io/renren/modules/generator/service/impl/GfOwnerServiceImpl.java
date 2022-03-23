@@ -18,9 +18,11 @@ public class GfOwnerServiceImpl extends ServiceImpl<GfOwnerDao, GfOwnerEntity> i
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        Long instructorId = (Long)params.get("instructorId");
         IPage<GfOwnerEntity> page = this.page(
                 new Query<GfOwnerEntity>().getPage(params),
                 new QueryWrapper<GfOwnerEntity>()
+                    .eq(instructorId != null, "instructor_id", instructorId)
         );
 
         return new PageUtils(page);

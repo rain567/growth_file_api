@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 档案信息表
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2022-03-14 14:19:55
@@ -104,5 +104,10 @@ public class GfOwnerEntity implements Serializable {
 	 * 备注
 	 */
 	private String remark;
+
+	/**
+	 * 辅导员id
+	 */
+	private String instructorId;
 
 }

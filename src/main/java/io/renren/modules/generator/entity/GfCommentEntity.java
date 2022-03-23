@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 评论管理
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2022-03-14 22:07:24
@@ -33,9 +33,17 @@ public class GfCommentEntity implements Serializable {
 	 */
 	private Long originUserId;
 	/**
+	 * 被评论者姓名
+	 */
+	private String originUserName;
+	/**
 	 * 评论内容
 	 */
 	private String content;
+	/**
+	 * 创建者姓名
+	 */
+	private String username;
 	/**
 	 * 评论者身份
 	 */

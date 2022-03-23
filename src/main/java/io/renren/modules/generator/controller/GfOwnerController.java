@@ -1,6 +1,7 @@
 package io.renren.modules.generator.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import io.renren.modules.sys.controller.AbstractController;
@@ -38,11 +39,14 @@ public class GfOwnerController extends AbstractController {
     @RequestMapping("/list")
     @RequiresPermissions("generator:gfowner:list")
     public R list(@RequestParam Map<String, Object> params){
-        getUser().getRoleIdList().parallelStream().forEach(item -> {
-            if (item == 3) {
-                params.put("instructorId", item);
-            }
-        });
+        List<Long> roleIdList = getUser().getRoleIdList();
+        if (roleIdList != null) {
+            roleIdList.parallelStream().forEach(item -> {
+                if (item == 3) {
+                    params.put("instructorId", item);
+                }
+            });
+        }
         PageUtils page = gfOwnerService.queryPage(params);
 
         return R.ok().put("page", page);

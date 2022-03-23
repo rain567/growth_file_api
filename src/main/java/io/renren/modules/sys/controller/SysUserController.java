@@ -16,11 +16,13 @@ import io.renren.common.validator.Assert;
 import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AddGroup;
 import io.renren.common.validator.group.UpdateGroup;
+import io.renren.modules.generator.controller.GfClassController;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.form.PasswordForm;
 import io.renren.modules.sys.service.SysUserRoleService;
 import io.renren.modules.sys.service.SysUserService;
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,8 @@ public class SysUserController extends AbstractController {
 	private SysUserService sysUserService;
 	@Autowired
 	private SysUserRoleService sysUserRoleService;
-
+	@Autowired
+	private GfClassController gfClassController;
 
 	/**
 	 * 所有用户列表
@@ -54,8 +57,26 @@ public class SysUserController extends AbstractController {
 			params.put("createUserId", getUserId());
 		}
 		PageUtils page = sysUserService.queryPage(params);
-
 		return R.ok().put("page", page);
+	}
+
+	@GetMapping("/studentList")
+	public R studentList(@RequestParam Map<String, Object> params){
+		String userClass = getUser().getUserClass();
+		if (StringUtils.isNotBlank(userClass)) {
+			params.put("userClass", userClass);
+		}
+		PageUtils page = sysUserService.queryPage(params);
+		return R.ok().put("page", page);
+	}
+
+	/**
+	 * 所有用户列表
+	 */
+	@GetMapping("/allList")
+	public R allList(@RequestParam Map<String, Object> params){
+		List<SysUserEntity> list = sysUserService.list(params);
+		return R.ok().put("list", list);
 	}
 
 	/**

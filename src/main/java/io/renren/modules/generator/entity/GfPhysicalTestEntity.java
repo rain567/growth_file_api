@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 体测管理
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2022-03-14 22:07:24
@@ -39,31 +39,31 @@ public class GfPhysicalTestEntity implements Serializable {
 	/**
 	 * 长跑
 	 */
-	private Integer longRun;
+	private String longRun;
 	/**
 	 * 引体向上
 	 */
-	private Integer chinUp;
+	private String chinUp;
 	/**
 	 * 立定跳远
 	 */
-	private Integer standingLongJump;
+	private String standingLongJump;
 	/**
 	 * 左立体前屈
 	 */
-	private Integer seatBodyAnteflexion;
+	private String seatBodyAnteflexion;
 	/**
 	 * 短跑
 	 */
-	private Integer sprint;
+	private String sprint;
 	/**
 	 * 肺活量
 	 */
-	private Integer pulmonary;
+	private String pulmonary;
 	/**
 	 * 体重
 	 */
-	private Integer weight;
+	private String weight;
 	/**
 	 * 长跑得分
 	 */

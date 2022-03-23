@@ -34,7 +34,7 @@ public class SysUserEntity implements Serializable {
 	 * 学号/工号
 	 */
 	@NotBlank(message="学号/工号不能为空", groups = {AddGroup.class})
-	private Integer no;
+	private String no;
 	/**
 	 * 用户名
 	 */

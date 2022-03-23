@@ -48,12 +48,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
 		String username = (String)params.get("username");
+		String userClass = (String)params.get("userClass");
 		Long createUserId = (Long)params.get("createUserId");
 
 		IPage<SysUserEntity> page = this.page(
 			new Query<SysUserEntity>().getPage(params),
 			new QueryWrapper<SysUserEntity>()
 				.like(StringUtils.isNotBlank(username),"username", username)
+				.eq(StringUtils.isNotBlank(userClass),"user_class", userClass)
 				.eq(createUserId != null,"create_user_id", createUserId)
 		);
 

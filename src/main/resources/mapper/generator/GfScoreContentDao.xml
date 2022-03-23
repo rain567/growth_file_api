@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.GfScoreContentDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.GfScoreContentEntity" id="gfScoreContentMap">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="operator" column="operator"/>
+        <result property="remark" column="remark"/>
+        <result property="studentName" column="student_name"/>
+        <result property="studentNo" column="student_no"/>
+        <result property="course" column="course"/>
+        <result property="teacher" column="teacher"/>
+    </resultMap>
+
+
+</mapper>
