@@ -17,19 +17,28 @@ import io.renren.common.validator.ValidatorUtils;
 import io.renren.common.validator.group.AddGroup;
 import io.renren.common.validator.group.UpdateGroup;
 import io.renren.modules.generator.controller.GfClassController;
+import io.renren.modules.generator.dto.GfPhysicalTestDTO;
+import io.renren.modules.generator.dto.SysUserDTO;
+import io.renren.modules.generator.entity.GfPhysicalTestEntity;
 import io.renren.modules.sys.entity.SysUserEntity;
 import io.renren.modules.sys.form.PasswordForm;
 import io.renren.modules.sys.service.SysUserRoleService;
 import io.renren.modules.sys.service.SysUserService;
+import io.renren.utils.ExcelUtils;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 系统用户
@@ -43,8 +52,9 @@ public class SysUserController extends AbstractController {
 	private SysUserService sysUserService;
 	@Autowired
 	private SysUserRoleService sysUserRoleService;
-	@Autowired
-	private GfClassController gfClassController;
+
+	/** 学生角色id */
+	private final Long STUDENT_ROLE_ID = 3L;
 
 	/**
 	 * 所有用户列表
@@ -185,6 +195,36 @@ public class SysUserController extends AbstractController {
 		}
 
 		sysUserService.deleteBatch(userIds);
+
+		return R.ok();
+	}
+
+
+	/**
+	 *
+	 * @param file
+	 * @return
+	 */
+	@PostMapping("/batchSave")
+	public R saveAndGradeAndFile(@RequestParam(value="uploadFile", required = false) MultipartFile file){
+		List<SysUserDTO> list = ExcelUtils.readExcel("", SysUserDTO.class, file);
+		list.parallelStream()
+				.peek(item -> {
+					SysUserEntity sysUserEntity = new SysUserEntity();
+					try {
+						BeanUtils.copyProperties(sysUserEntity, item);
+						List<Long> roleIdList = new ArrayList<>();
+						roleIdList.add(STUDENT_ROLE_ID);
+						sysUserEntity.setRoleIdList(roleIdList);
+						sysUserEntity.setPassword(sysUserEntity.getMobile());
+						sysUserEntity.setUsername(sysUserEntity.getName());
+						sysUserService.saveUser(sysUserEntity);
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					}
+				}).collect(Collectors.toList());;
 
 		return R.ok();
 	}

@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 成绩
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2022-03-14 14:19:56
@@ -49,6 +49,10 @@ public class GfScoreEntity implements Serializable {
 	 */
 	private String className;
 	/**
+	 * 学院
+	 */
+	private String institute;
+	/**
 	 * 考试时间
 	 */
 	private Date examTime;
@@ -56,6 +60,14 @@ public class GfScoreEntity implements Serializable {
 	 * 考试类型
 	 */
 	private String type;
+	/**
+	 * 考试方式
+	 */
+	private String pattern;
+	/**
+	 * 学分
+	 */
+	private String credit;
 	/**
 	 * 创建时间
 	 */

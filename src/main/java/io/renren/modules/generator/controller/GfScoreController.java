@@ -1,21 +1,26 @@
 package io.renren.modules.generator.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import io.renren.modules.generator.dto.GfPhysicalTestDTO;
+import io.renren.modules.generator.dto.GfScoreDTO;
+import io.renren.modules.generator.entity.GfPhysicalTestEntity;
+import io.renren.utils.DateUtils;
+import io.renren.utils.ExcelUtils;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.modules.generator.entity.GfScoreEntity;
 import io.renren.modules.generator.service.GfScoreService;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
-
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -84,6 +89,32 @@ public class GfScoreController {
     public R delete(@RequestBody Long[] ids){
 		gfScoreService.removeByIds(Arrays.asList(ids));
 
+        return R.ok();
+    }
+
+
+    /**
+     *
+     * @param file
+     * @return
+     */
+    @PostMapping("/batchSave")
+    public R saveAndGradeAndFile(@RequestParam(value="uploadFile", required = false) MultipartFile file){
+        List<GfScoreDTO> list = ExcelUtils.readExcel("", GfScoreDTO.class, file);
+        List<GfScoreEntity> collect = list.parallelStream()
+                .map(item -> {
+                    GfScoreEntity gfScoreEntity = new GfScoreEntity();
+                    try {
+                        BeanUtils.copyProperties(gfScoreEntity, item);
+                        gfScoreEntity.setExamTime(DateUtils.stringToDate(item.getExamTimeStr(), "yyyy-MM-dd HH:mm:ss"));
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                    return gfScoreEntity;
+                }).collect(Collectors.toList());;
+        gfScoreService.saveBatch(collect);
         return R.ok();
     }
 

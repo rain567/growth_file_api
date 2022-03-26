@@ -102,7 +102,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 		this.save(user);
 
 		//检查角色是否越权
-		checkRole(user);
+//		checkRole(user);
 
 		//保存用户与角色关系
 		sysUserRoleService.saveOrUpdate(user.getUserId(), user.getRoleIdList());
@@ -119,7 +119,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 		this.updateById(user);
 
 		//检查角色是否越权
-		checkRole(user);
+//		checkRole(user);
 
 		//保存用户与角色关系
 		sysUserRoleService.saveOrUpdate(user.getUserId(), user.getRoleIdList());
