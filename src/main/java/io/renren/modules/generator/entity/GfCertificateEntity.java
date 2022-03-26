@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 资格证书管理
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2022-03-14 22:07:24
@@ -36,6 +36,10 @@ public class GfCertificateEntity implements Serializable {
 	 * 证书名称
 	 */
 	private String name;
+	/**
+	 * 材料
+	 */
+	private String cl;
 	/**
 	 * 证书级别
 	 */

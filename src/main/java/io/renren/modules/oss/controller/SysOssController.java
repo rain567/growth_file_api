@@ -25,9 +25,12 @@ import io.renren.modules.oss.service.SysOssService;
 import io.renren.modules.sys.service.SysConfigService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
@@ -44,9 +47,11 @@ public class SysOssController {
 	private SysOssService sysOssService;
     @Autowired
     private SysConfigService sysConfigService;
+	@Value("${file.path}")
+	private String filePath;
 
     private final static String KEY = ConfigConstant.CLOUD_STORAGE_CONFIG_KEY;
-	
+
 	/**
 	 * 列表
 	 */
@@ -95,7 +100,7 @@ public class SysOssController {
 
 		return R.ok();
 	}
-	
+
 
 	/**
 	 * 上传文件
@@ -130,6 +135,49 @@ public class SysOssController {
 		sysOssService.removeByIds(Arrays.asList(ids));
 
 		return R.ok();
+	}
+
+	/**
+	 * 上传文件
+	 */
+	@PostMapping("/uploadByLocal")
+	public R uploadByLocal(@RequestParam("file") MultipartFile file) throws Exception {
+		if (file.isEmpty()) {
+			throw new RRException("上传文件不能为空");
+		}
+
+		// 获取文件名
+		String fileName = file.getOriginalFilename();
+		fileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) +fileName;
+
+		//放到类路径下的imgs文件夹中
+		String path = filePath + fileName;
+
+		//创建文件路径
+		File dest = new File(path);
+		//判断文件是否已经存在
+		if (dest.exists()) {
+			return R.error("上传失败,文件已经存在");
+		}
+		//判断文件父目录是否存在
+		if (!dest.getParentFile().exists()) {
+			dest.getParentFile().mkdir();
+		}
+		try {
+			//上传文件//保存文件
+			file.transferTo(dest);
+		} catch (Exception e) {
+			return R.error("上传失败");
+		}
+		String url = "/imgs/" + fileName;
+
+		//保存文件信息
+		SysOssEntity ossEntity = new SysOssEntity();
+		ossEntity.setUrl(url);
+		ossEntity.setCreateDate(new Date());
+		sysOssService.save(ossEntity);
+
+		return R.ok().put("url", url);
 	}
 
 }

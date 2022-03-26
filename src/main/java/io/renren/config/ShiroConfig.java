@@ -54,6 +54,8 @@ public class ShiroConfig {
         filterMap.put("/generator/gfphysicaltest/batchSave", "anon");
         filterMap.put("/sys/user/batchSave", "anon");
         filterMap.put("/generator/gfscore/batchSave", "anon");
+        filterMap.put("/sys/oss/uploadByLocal", "anon");
+        filterMap.put("/imgs/**", "anon");
         filterMap.put("/druid/**", "anon");
         filterMap.put("/app/**", "anon");
         filterMap.put("/sys/login", "anon");

@@ -33,7 +33,8 @@ spring:
                     config:
                         multi-statement-allow: true
 
-
+file:
+    path: e:/growth_file_api_img/
 ##多数据源的配置
 #dynamic:
 #  datasource:
